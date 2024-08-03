@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Carousel Banner</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            /* background-color: #961c1c; */
+            background-image: repeating-linear-gradient(to right, transparent 0 100px,
+                    #25283b22 100px 101px),
+                repeating-linear-gradient(to bottom, transparent 0 100px,
+                    #25283b22 100px 101px);
+            font-family: montserrat;
+            /* background-color:black; */
+            background-image: url(./images/whiteBG.jpg);
+        }
+
+        body::before {
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner .slider {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 45s linear infinite;
+            z-index: 2;
+        }
+        @keyframes autoRun {
+            from {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }
+
+            to {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+        .banner .slider .item {
+            position: absolute;
+            inset: 0 0 0 0;
+            transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(450px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 1px 2px 5px 3px gray;
+        }
+        .banner .slider .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .banner .content {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1400px, 100vw);
+            height: max-content;
+            padding-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+        .banner .content h1 {
+            font-family: 'ICA Rubrik';
+            font-size: 16em;
+            line-height: 1em;
+            color: #25283B;
+            position: relative;
+        }
+        .banner .content h1::after {
+            position: absolute;
+            inset: 0 0 0 0;
+            content: attr(data-content);
+            z-index: 2;
+            -webkit-text-stroke: 2px #d2d2d2;
+            color: transparent;
+        }
+        .banner .content .author {
+            font-family: Poppins;
+            text-align: right;
+            max-width: 200px;
+        }
+        .banner .content h2 {
+            font-size: 3em;
+        }
+
+        .banner .content .model {
+            background-image: url(images/model.png);
+            width: 100%;
+            height: 75vh;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-size: auto 130%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            z-index: 1;
+        }
+
+        .con {
+            background: rgb(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1.2em;
+            border-radius: 0 0 20px 20px;
+            position: absolute;
+            bottom: 0px;
+            backface-visibility: hidden;
+            font-size: 0.7em;
+        }
+
+        @media screen and (max-width: 1023px) {
+            .banner .slider {
+                width: 160px;
+                height: 200px;
+                left: calc(50% - 80px);
+            }
+
+            .banner .slider .item {
+                transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+            }
+
+            .banner .content h1 {
+                text-align: center;
+                width: 100%;
+                text-shadow: 0 10px 20px #000;
+                font-size: 7em;
+            }
+
+            .banner .content .author {
+                color: #fff;
+                padding: 20px;
+                text-shadow: 0 10px 20px #000;
+                z-index: 2;
+                max-width: unset;
+                width: 100%;
+                text-align: center;
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .banner .slider {
+                width: 100px;
+                height: 150px;
+                left: calc(50% - 50px);
+            }
+
+            .banner .slider .item {
+                transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+            }
+
+            .banner .content h1 {
+                font-size: 5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><a href="./mus1.html" target="_blank"><img
+                        src="./images/mus11.jpg" alt=""></a>
+                <div class="con">Louvre Museum</div>
+            </div>
+            <div class="item" style="--position: 2"><a href="./mus2.html" target="_blank"></a><img
+                    src="./images/mus12.jpg" alt=""></a>
+                <div class="con"> Palace of Versailles  </div>
+            </div>
+            <div class="item" style="--position: 3"><a href="./mus3.html" target="_blank"><img
+                        src="./images/mus13.jpg" alt=""></a>
+                <div class="con">Musée d’Orsay, Paris</div>
+            </div>
+            <div class="item" style="--position: 4"><a href="./mus4.html" target="_blank"></a><img
+                    src="./images/mus14.jpg" alt=""></a>
+                <div class="con">MuCem</div>
+            </div>
+            <div class="item" style="--position: 5"><a href="./mus5.html" target="_blank"><img
+                        src="./images/mus15.jpg" alt=""></a>
+                <div class="con">Centre Pompidou  </div>
+            </div>
+            <div class="item" style="--position: 6"><a href="./mus6.html" target="_blank"><img
+                        src="./images/mus16.jpg" alt=""></a>
+                <div class="con">Petit Palais </div>
+            </div>
+            <div class="item" style="--position: 7"><a href="./mus7.html" target="_blank"><img
+                        src="./images/mus17.jpg" alt=""></a>
+                <div class="con">Musée de l'Armée </div>
+            </div>
+            <div class="item" style="--position: 8"><a href="./mus8.html" target="_blank"><img
+                        src="./images/mus18.jpg" alt=""></a>
+                <div class="con"> Musée Carnavalet   </div>
+            </div>
+            <div class="item" style="--position: 9"><a href="./mus9.html" target="_blank"><img
+                        src="./images/mus19.jpg" alt=""></a>
+                <div class="con">Musée national de l’Orangerie </div>
+            </div>
+            <div class="item" style="--position: 10"><a href="./mus10.html" target="_blank"><img
+                        src="./images/mus20.jpg" alt=""></a>
+                <div class="con"> Musée du Quai Branly  </div>
+            </div>
+        </div></div>
+</body>
+</html>

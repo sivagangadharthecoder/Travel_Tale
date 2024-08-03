@@ -1,0 +1,168 @@
+<html>
+<head>
+    <title>Flip Card with Map</title>
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            background-color: #f0f0f0;
+            font-family: "montserrat";
+            background-image: url(./images/whiteBG.jpg);
+        }
+        .historic3_main {
+            width: 87%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 60%;
+            height: 550px;
+            perspective: 1000px;
+            overflow: hidden;
+        }   
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 3s ease;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        .flip-card-front {
+            background-color: red;
+            background-image: url("./images/histo3.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .flip-card-back {
+            background-color: #fff;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40px;
+        }
+        .flip-card-back iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .historic3_Matter {
+            /* height: 550px; */
+            width: 36%;
+            box-shadow: 0 0 15px 2px grey;
+            border: 2px solid white;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            background-color: white ;
+            
+            /* justify-content: center; */
+        }
+        .historic3_head {
+            font-size: 35px;
+            padding-top: 40px;
+            padding-left: 30px;
+        }
+        .historic3_theory {
+            font-size: 1rem;
+            padding: 15px 30px;
+            line-height: 33px;
+        }
+        @media (max-width: 995px) {
+            .historic3_main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flip-card {
+                width: 90%;
+                height: 410px;
+                /* height: auto; */
+                /* margin-bottom: 20px; */
+            }
+            .historic3_Matter {
+                width: 90%;
+                height: auto;
+            }
+            .historic3_head {
+                font-size: 35px;
+                padding-top: 20px;
+                padding-left: 20px;
+            }
+            .historic3_theory {
+                font-size: 20px;
+                padding: 10px 20px;
+                line-height: 28px;
+            }
+        }
+        .historic3_theory {
+            font-size: 1.01rem;
+            padding: 15px 30px;
+            line-height: 33px;
+            text-align: center;
+        }
+        #rm{
+            padding:0.7em;
+            border: 1px solid red;
+            background-color: red;
+            color: white;
+            border-radius: 50px;
+        }
+        .historic3_Matter{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #rm{
+            padding:0.7em;
+            border: 1px solid red;
+            background-color: red;
+            color: white;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="historic3_main">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front"></div>
+                <div class="flip-card-back">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21097.88509272152!2d-1.549297710437874!3d48.62447276325804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480ea8d67c9ceeb3%3A0xc5834ce47e0dc3fe!2s50170%20Mont%20Saint-Michel%2C%20France!5e0!3m2!1sen!2sin!4v1721717053038!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="historic3_Matter">
+            <center><div class="historic3_head">Mont Saint-Michel</div></center>
+            <div class="historic3_theory">
+              Mont Saint-Michel is a stunning island commune in Normandy, France. It’s known for its medieval architecture and dramatic location on a rocky island in the Bay of Mont Saint-Michel. The abbey, perched on top of the island, has been a significant pilgrimage site for centuries. 
+            </div>
+            <div>
+                <a href="https://en.wikipedia.org/wiki/Mont-Saint-Michel
+                " target="_blank"><button title="button" id="rm">Read More..</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

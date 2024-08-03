@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://img.freepik.com/premium-photo/illustration-airplane_931878-277607.jpg");
+            /* background-color: #0F52BA; */
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden; /* Ensure flight doesn't show outside its bounds */
+        }
+        .login {
+            width: 420px;
+            background: rgba(243, 235, 235, 0.215);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px 40px;
+            display: none;
+            z-index: 2;
+        }
+        .login.active {
+            display: block;
+        }
+        .login h1 {
+            font-size: 36px;
+            text-align: center;
+            color: rgb(9, 9, 9);
+        }
+        .username {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+        }
+        .username input {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            font-size: 16px;
+            color: rgb(6, 6, 6);
+            padding: 15px 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .username input::placeholder {
+            color: rgb(238, 50, 3);
+        }
+        .username i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+        .remender_forget {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            color: rgb(10, 10, 10);
+            margin: -15px 0 15px;
+        }
+        .remender_forget label {
+            display:flex;
+            align-items: center;
+        }
+        .remender_forget label input {
+            margin-right: 5px;
+        }
+        .remender_forget a {
+            color: rgb(17, 16, 16);
+            text-decoration: none;
+        }
+        .remender_forget a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.204);
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(51, 50, 50, 0.2);
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            font-weight: 600;
+            --backdrop-filter: blur(5px);
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(39, 162, 229, 0.5);
+        }
+
+       
+
+        .registe_link a {
+            color: rgb(13, 13, 13);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .registe_link a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+            color: rgb(8, 8, 8);
+        }
+
+        .close {
+            color: rgb(17, 17, 17);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #aaa;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #0a0a0a;
+            border-radius: 5px;
+        }
+
+        .modal .btn {
+            background-color: #005E69;
+            color: rgb(229, 18, 18);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #0a0a0a;
+        }
+
+        .modal .btn:hover {
+            background-color:greenyellow;
+        }
+
+        @media screen and (max-width: 425px) {
+            .remender_forget {
+                /* flex-direction: column; */
+                align-items: center;
+                line-height: 0px;
+                padding-bottom: 20px;
+            }
+            .username {
+                width: 300px;
+                padding-left: 20px;
+            }
+
+            .btn {
+                width: 300px;
+                margin-left: 10px;
+
+            }
+        }
+
+        /* Animation for the flight */
+        .flight {
+            position: absolute;
+            left: -200px;
+            bottom: -100px;
+            width: 300px;
+            height: 300px;
+            background: url('https://www.pngall.com/wp-content/uploads/5/Flying-Aeroplane-PNG-File.png') no-repeat center center;
+            background-size: contain;
+            display: none; 
+            transition: transform 1s;
+            
+        }
+
+        @keyframes flyToTopRight {
+            from {
+                left: -200px;
+                bottom: -100px;
+            }
+            to {
+                transform: translateX(calc(140vw - 300px)) translateY(-90vh);
+            }
+        }
+
+        .flight.animate {
+            animation: flyToTopRight 4s ease-in-out;
+        }
+        @media  screen and (max-width:475px) {
+            p{
+                font-size: 15px;
+            }
+            #rmbr{
+                font-size: 13px;
+            }
+            .btn{
+
+                width: 215px;
+            }
+        }
+        .registe_link p{
+            /* font-size: 30px; */
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(14, 13, 13);
+        }
+        #lb{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div id="login_form" class="login active">
+            <h1>Log In</h1>
+            <div class="username">
+                <label><input type="text" id="login_username" placeholder="User Name" required></label>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="username">
+                <label><input type="password" id="login_password" placeholder="Password" required /></label>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remender_forget">
+                <label><input type="checkbox" id="rmbr">Remember Me </label>
+                <a href="#" onclick="showForgetPasswordModal()">Forget Password?</a>
+            </div>
+            <div id="lb"><button type="submit" class="btn" style="color: rgb(33, 180, 33);" onclick="animateFlight()">Login</button></div>
+            <div class="registe_link">
+                <p>Don't have an account ? <a href="#" onclick="showRegisterForm()">Register</a></p>
+            </div>
+        </div>
+        <div id="register_form" class="login">
+            <h1>Registration</h1>
+            <div class="username">
+                <label><input type="text" id="register_username" placeholder="User Name" required></label>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="username">
+                <label><input type="email" id="register_email" placeholder="Email" required></label>
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div class="username">
+                <label><input type="password" id="register_password" placeholder="Password" required/></label>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remender_forget">
+                <label><input type="checkbox" required/>I agree to terms & Condition</label>
+            </div>
+            <div id="lb">
+                <button type="button" class="btn" style="color:  rgb(33, 180, 33);" onclick="registerUser()">Register</button>
+            </div>
+            <div class="registe_link">
+                <p>Already have an account ? <a href="#" onclick="showLoginForm()">Login</a></p>
+            </div>
+        </div>
+
+        
+        <div class="flight"></div>
+    </div>
+
+    <!-- Forget Password Modal -->
+    <div id="forgetPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForgetPasswordModal()">&times;</span>
+            <h2 style="color: white;">Reset Password</h2>
+            <p style="color: rgb(14, 158, 254);">Please enter your email address to receive password reset instructions.</p>
+            <input type="email" placeholder="Email" required>
+            <button type="button" class="btn" onclick="sendPasswordReset()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Define data.url
+        const data = {
+            url: './index.html' // Replace with your actual URL
+        };
+
+        // Simple in-memory storage for registered users
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+
+        function showRegisterForm() {
+            document.getElementById('login_form').classList.remove('active');
+            document.getElementById('register_form').classList.add('active');
+        }
+
+        function showLoginForm() {
+            document.getElementById('register_form').classList.remove('active');
+            document.getElementById('login_form').classList.add('active');
+        }
+
+        function registerUser() {
+            const username = document.getElementById('register_username').value.trim();
+            const email = document.getElementById('register_email').value.trim();
+            const password = document.getElementById('register_password').value.trim();
+
+            if (username && email && password) {
+                users[username] = { email, password };
+                localStorage.setItem('users', JSON.stringify(users));
+                alert('Registration successful!');
+                showLoginForm();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        function showForgetPasswordModal() {
+            document.getElementById('forgetPasswordModal').style.display = 'block';
+            document.getElementById('login_form').style.display = 'none';
+        }
+
+        function closeForgetPasswordModal() {
+            document.getElementById('forgetPasswordModal').style.display = 'none';
+            document.getElementById('login_form').style.display = 'block';
+        }
+
+        function sendPasswordReset() {
+            alert('Password reset instructions sent to your email.');
+            closeForgetPasswordModal();
+        }
+
+        function animateFlight() {
+            const username = document.getElementById('login_username').value.trim();
+            const password = document.getElementById('login_password').value.trim();
+
+            if (!username || !password) {
+                alert('Please enter both username and password.');
+                return;
+            }
+
+            if (!users[username] || users[username].password !== password) {
+                alert('Invalid username or password.');
+                return;
+            }
+
+            const flight = document.querySelector('.flight');
+            flight.style.display = 'block';
+            flight.classList.add('animate');
+
+            flight.addEventListener('animationend', () => {
+                setTimeout(() => {
+                    flight.classList.remove('animate');
+                    flight.style.display = 'none';
+                    window.location.href = data.url;
+                }); // Add a small delay to ensure smooth transition
+            });
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('forgetPasswordModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

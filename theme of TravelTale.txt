@@ -1,0 +1,7 @@
+1.login / sign-up
+2.header and homepage
+3.categories -> spin wheels -> matter about places
+4.seasons -> slick
+5.transport
+6.book now
+7.footer

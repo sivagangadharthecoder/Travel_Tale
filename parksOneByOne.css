@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            background-color: #f0f0f0;
+            font-family:"montserrat";
+            background-image: url(./images/whiteBG.jpg);
+        }
+
+        .waterfall_main {
+            width: 87%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 60%;
+            height: 550px;
+            perspective: 1000px;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: all 1.5s linear;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background-color: red;
+            background-image: url("./images/waterfall_11.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .flip-card-back {
+            background-color: #fff;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40px;
+        }
+
+        .flip-card-back iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .waterfall_Matter {
+            /* height: 550px; */
+            width: 36%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            /* justify-content: center; */
+            align-items: center;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .waterfall_head {
+            font-size: 45px;
+            padding-top: 40px;
+            padding-left: 30px;
+            color: red;
+        }
+
+        .waterfall_theory {
+            font-size: 1rem;
+            padding: 15px 20px;
+            line-height: 33px;
+            text-align: center;
+            
+        }
+
+       
+        iframe {
+            width: 100%;
+            height: 100%;
+            filter: invert(100%);
+            border-radius: 20px;
+        }
+        .glow-on-hover {
+            /* width: 100px;
+            height: 30px; */
+            border: none;
+            outline: none;
+            color: black;
+            background: white;
+            cursor: pointer;
+            /* position: absolute; */
+            z-index: 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 50px;
+            font-size: 1em;
+            padding: 0.7em;
+            margin-bottom: 10px;
+            left: 40%;
+            /* display: none; */
+            /* background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); */
+        }
+
+        .glow-on-hover:before {
+            content: '';
+            /* background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+        .glow-on-hover{
+            background-color: red;
+            color: white;
+            border-radius: 50px;
+        }
+        .glow-on-hover:active {
+            color: #e0dddd
+        }
+
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ede8e8;
+            /* border: 1px solid black; */
+            /* border-radius: 20px; */
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+        #span{
+            font-size: 20px;
+            font-weight: 600;
+            word-spacing: 0;
+            color: red;
+        }
+
+        @keyframes glowing {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        @media (min-width:1900px) {
+            .glow-on-hover {
+                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+               
+                     
+            }
+
+        }
+
+        @media (max-width: 995px) {
+            .waterfall_main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .glow-on-hover{
+                /* display: none; */
+            }
+
+            .flip-card {
+                width: 90%;
+                height: 410px;
+                /* height: auto; */
+                /* margin-bottom: 20px; */
+            }
+
+            .waterfall_Matter {
+                width: 90%;
+                height: auto;
+            }
+
+            .waterfall_head {
+                font-size: 35px;
+                padding-top: 20px;
+                padding-left: 20px;
+                text-align: center;
+            }
+
+            .waterfall_theory {
+                font-size: 0.8rem;
+                padding: 10px 20px;
+                line-height: 28px;
+                text-align: center;
+                /* box-sizing: border-box; */
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+        

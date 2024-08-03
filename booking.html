@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Booking Form</title>
+    <link rel="icon" href="../beaches_adventures_footer/images/icon.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        #bookingPageMain {
+            width: 100%;
+            height: 100vh;overflow: hidden;
+            display: grid;
+            place-content: center;
+            font-family: "Montserrat";
+            overflow: hidden;
+            background-image: url(./images/francebackground.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #h11 {
+            color: red;
+        }
+
+        .trip {
+            width: max-content;
+            height: max-content;
+            padding: 50px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input, select {
+            font-family: "Montserrat";
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 1em;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input:active, select:active {
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background-color: white;
+            font-family: "Montserrat";
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: black;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 0.5s ease;
+        }
+
+        #submitttt {
+            background-color: red;
+            color: white;
+        }
+
+        #vieww {
+            background-color: red;
+            color: white;
+        }
+
+        #submitttt::before, #vieww::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            top: 0;
+            left: -100%;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease-out;
+            z-index: -1;
+        }
+
+        #submitttt::after, #vieww::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            border-radius: 50%;
+            top: 0;
+            left: -100%;
+            transition: left 0.5s ease-out;
+            z-index: -2;
+        }
+
+        #submitttt:hover::before, #vieww:hover::before {
+            transform: scaleX(1);
+            left: 0;
+        }
+
+        #submitttt:hover::after, #vieww:hover::after {
+            left: 0;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            display: none;
+        }
+
+        @media screen and (max-width: 475px) {
+            #h11 {
+                font-size: 20px;
+            }
+
+            .trip, input, select {
+                font-size: 8px;
+            }
+
+            #submitttt, #vieww {
+                font-size: 10px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            #bookingPageSubMain {
+                padding: 30px;
+            }
+
+            .trip {
+                padding: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+   <div id="bookingPageMain">
+        <div id="bookingPageSubMain">
+            <form class="trip">
+                <h1 id="h11">Trip Booking Form</h1>
+                <label for="fullname">Full Name: </label>
+                <input type="text" name="FullName" placeholder="Full Name" required/><br>
+                <span id="fullnameError" class="error-message">Full Name is required.</span>
+
+                <label for="phone">Phone Number: </label>
+                <input type="tel" name="PhoneNumber" placeholder="Phone Number" required/><br>
+                <span id="phoneError" class="error-message">Phone Number is required.</span>
+
+                <label for="email">Email: </label>
+                <input type="email" name="Email" placeholder="Email" required/><br>
+                <span id="emailError" class="error-message">Email is required.</span>
+
+                <label for="departure">Departure Date: </label>
+                <input type="date" name="DepartureDate" placeholder="Departure Date" required/><br>
+                <span id="departureError" class="error-message">Departure Date is required.</span>
+
+                <label for="destination">Destination: </label>
+                <select name="Destination" required>
+                    <optgroup label="Beaches">
+                        <option>Choose your destination....</option> 
+                        <option>Nice Beach</option>
+                        <option>Biarritz Grande Plage</option>
+                        <option>Palombaggia Beach</option>
+                        <option>Calvi Beach</option>
+                        <option>Deauville Beach</option>
+                        <option>Plage du Sillon</option>
+                        <option>La Baule Beach</option>
+                        <option>Plage de l’Espiguette</option>
+                        <option>Côte des Basques</option>
+                        <option>Plage de Pampelonne</option>
+                     </optgroup>
+                    <optgroup label="Historical">
+                       <option>Effiel Tower</option>
+                       <option>Louvre Museum</option>
+                       <option>Mont Saint-Michel</option>
+                       <option>Luxembourg Palace</option>
+                       <option>Palais Garnier</option>
+                       <option>Jardin du Luxembourg</option>
+                       <option>Palace of Versailles</option>
+                       <option>Musée d'Orsay</option>
+                       <option>Lyon</option>
+                       <option>Strasbourg</option>
+                    </optgroup>
+                    <optgroup label="Museums">
+                        <option>Palace of Versailles</option>
+                        <option>MuCem</option>
+                        <option>Mont Saint-Michel</option>
+                        <option>Centre Pompidou</option>
+                        <option>Petit Palais</option>
+                        <option>Musée de l'Armée</option>
+                        <option>Palace of Versailles</option>
+                        <option>Musée national de l’Orangerie</option>
+                        <option>Musée du Quai Branly</option>
+                        <option>Louvre Museum</option>
+                     </optgroup>
+                     <optgroup label="Adventures">
+                        <option>Mont Blanc</option>
+                        <option>Verdon Gorge</option>
+                        <option>Chamonix</option>
+                        <option>Pyrenees National Park</option>
+                        <option>Calanques National Park</option>
+                        <option>Dune of Pilat</option>
+                        <option>Gorges du Tarn</option>
+                        <option>Annecy</option>
+                        <option> Corsica</option>
+                        <option>Fontainebleau</option>
+                     </optgroup>
+                     <optgroup label="Spiritual">
+                        <option>Mont Saint-Michel</option>
+                        <option>Lourdes</option>
+                        <option>Chartres Cathedral</option>
+                        <option>Rocamadour</option>
+                        <option>Saintes-Maries-de-la-Mer</option>
+                        <option>Abbey of Fontenay</option>
+                        <option>La Sainte-Baume</option>
+                        <option>St. Tropez – Our Lady of the Assumption Church</option>
+                        <option>Abbaye du Mont des Cats</option>
+                        <option>Sacré-Cœur Basilica</option>
+                     </optgroup>
+                     <optgroup label="Amusement Parks">
+                        <option>Parc des Buttes-Chaumont</option>
+                        <option>Jardin du Luxembourg</option>
+                        <option>Parc Monceau</option>
+                        <option>Parc de la Tête d'Or</option>
+                        <option>Parc de Saint-Cloud</option>
+                        <option>Parc National des Calanques</option>
+                        <option>Parc National de la Vanoise</option>
+                        <option>Parc Naturel Régional du Verdon</option>
+                        <option>Parc de la Villette</option>
+                        <option>Parc de Bagatelle </option>
+                     </optgroup>
+                     <optgroup label="Zoos">
+                        <option>De Beauval</option>
+                        <option>Palmyre</option>
+                        <option>Fleche</option>
+                        <option>Cerza</option>
+                        <option>Montpellier</option>
+                        <option>Amneville</option>
+                        <option>parc des félins</option>
+                        <option>Nausicaa Centre</option>
+                        <option>Animal Park of the Pyrenees</option>
+                        <option>Safari de Peaugres</option>
+                     </optgroup>
+                     <optgroup label="Waterfalls">
+                        <option>Cirque de Gavarnie</option>
+                        <option>Les Cascades du Herrisson</option>
+                        <option>Cascade du Rossignole</option>
+                        <option>Cascade de Sillans</option>
+                        <option>La Cascade des Tufs</option>
+                        <option>Cascades du Sautodet</option>
+                        <option>Chemin des Cascades</option>
+                        <option>La Fontaine de Vaucluse</option>
+                        <option>La Cascade d'Autoire</option>
+                        <option>Cascade de Glandieu</option>
+                     </optgroup>
+                    <!-- Add more options as needed -->
+                </select><br>
+                <span id="destinationError" class="error-message">Destination is required.</span>
+
+                <label for="days">Number of Days: </label>
+                <input type="number" name="NumberOfDays" placeholder="Number of Days" min="1" required/><br>
+                <span id="daysError" class="error-message">Number of Days is required and must be greater than 0.</span>
+
+                <button id="submitttt" onclick="submitt(event)" type="button">SUBMIT</button>
+                <button id="vieww" type="button" onclick="viewDetails()">View Details</button>
+            </form>
+        </div>
+   </div>
+   <script>
+    var data = {
+        FullName: "",
+        PhoneNumber: "",
+        Email: "",
+        DepartureDate: "",
+        Destination: "",
+        NumberOfDays: ""
+    };
+
+    function updateField(event, fieldName) {
+        data[fieldName] = event.target.value;
+    }
+
+    function validateForm() {
+        var isValid = true;
+
+        if (!data.FullName) {
+            document.getElementById('fullnameError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('fullnameError').style.display = 'none';
+        }
+
+        if (!data.PhoneNumber) {
+            document.getElementById('phoneError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('phoneError').style.display = 'none';
+        }
+
+        if (!data.Email) {
+            document.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('emailError').style.display = 'none';
+        }
+
+        if (!data.DepartureDate) {
+            document.getElementById('departureError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('departureError').style.display = 'none';
+        }
+
+        if (!data.Destination) {
+            document.getElementById('destinationError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('destinationError').style.display = 'none';
+        }
+
+        if (!data.NumberOfDays || data.NumberOfDays <= 0) {
+            document.getElementById('daysError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('daysError').style.display = 'none';
+        }
+
+        return isValid;
+    }
+
+    function submitt(event) {
+        event.preventDefault();
+        if (validateForm()) {
+            localStorage.setItem("formData", JSON.stringify(data));
+            alert("Data saved! Click 'View Details' to see the details in a new tab.");
+        } else {
+            alert("Please fill in all fields correctly.");
+        }
+    }
+
+    function viewDetails() {
+        var formData = JSON.parse(localStorage.getItem("formData"));
+        if (formData) {
+            var newTab = window.open();
+            newTab.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Trip Booking Details</title>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+                        body {
+                            font-family: Arial, sans-serif;
+                            background: rgb(241, 237, 237);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            font-family:"montserrat";
+                        }
+                        .container {
+                        font-size:10px;
+                            width: 50%;
+                            padding: 20px;
+                            border: 2px dashed red;
+                            border-radius: 10px;
+                            background: white;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            font-family: "Montserrat";
+                            display:flex;
+                            flex-direction:column;
+                        }
+                        h1 {
+                            text-align: center;
+                            color: red;
+                        }
+                        p {
+                            line-height: 1.6;
+                            font-size: 1.2em;
+                        }
+                        .print-btn {
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .print-btn button {
+                            padding: 10px 20px;
+                            background-color: red;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                            @media screen and (max-width:475px){
+                                .container{
+                                    font-size:8px;
+                                }
+                            }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>Trip Booking Receipt</h1>
+                        <p><strong>Full Name:</strong> ${formData.FullName}</p>
+                        <p><strong>Phone Number:</strong> ${formData.PhoneNumber}</p>
+                        <p><strong>Email:</strong> ${formData.Email}</p>
+                        <p><strong>Departure Date:</strong> ${formData.DepartureDate}</p>
+                        <p><strong>Destination:</strong> ${formData.Destination}</p>
+                        <p><strong>Number of Days:</strong> ${formData.NumberOfDays}</p>
+                        
+                        <div class="print-btn">
+                            <button onclick="window.print()">Print Receipt</button>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+        } else {
+            alert("No data found! Please submit the form first.");
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const formInputs = document.querySelectorAll('input, select');
+        formInputs.forEach(input => {
+            input.addEventListener('change', (event) => {
+                updateField(event, input.name);
+            });
+        });
+    });
+</script>
+</body>
+</html>

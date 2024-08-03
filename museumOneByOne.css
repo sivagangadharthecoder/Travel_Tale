@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    background-color: #f0f0f0;
+    font-family: "Montserrat";
+    background-image: url(./images/whiteBG.jpg);
+}
+.historic1_main {
+    width: 87%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 60%;
+    height: 550px;
+    perspective: 1000px;
+    overflow: hidden;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 3s ease;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 40px;
+    overflow: hidden;
+}
+.flip-card-front {
+    background-color: red;
+    background-image: url("/images/histo1.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.flip-card-back {
+    background-color: #fff;
+    color: black;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}
+.flip-card-back iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.historic1_Matter {
+    /* height: 550px; */
+    width: 36%;
+    box-shadow: 0 0 15px 2px grey;
+    border: 2px solid white;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   background-color: white;
+    
+    /* justify-content: center; */
+}
+.historic1_head {
+    font-size: 45px;
+    padding-top: 40px;
+    padding-left: 30px;
+}
+.historic1_theory {
+    font-size: 1rem;
+    padding: 15px 30px;
+    line-height: 33px;
+    text-align: center;
+    /* background-color: white; */
+}
+@media (max-width: 995px) {
+    .historic1_main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .flip-card {
+        width: 90%;
+        height: 410px;
+        /* height: auto; */
+        /* margin-bottom: 20px; */
+    }
+    .historic1_Matter {
+        width: 90%;
+        height: auto;
+    }
+    .historic1_head {
+        font-size: 35px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .historic1_theory {
+        font-size: 75%;
+        padding: 10px 20px;
+        line-height: 28px;
+    }
+}
+.historic1_Matter  a button{
+    padding:0.7em;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    background-color: #f0f0f0;
+}
+.historic2_main {
+    width: 87%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.flip-card {
+    background-color: transparent;
+    width: 60%;
+    height: 550px;
+    perspective: 1000px;
+    overflow: hidden;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 3s ease;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 40px;
+    overflow: hidden;
+}
+.flip-card-front {
+    background-color: red;
+    background-image: url("./Images/mus11.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.flip-card-back {
+    background-color: #fff;
+    color: black;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}
+.flip-card-back iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.historic2_Matter {
+    /* height: 550px; */
+    width: 36%;
+    box-shadow: 0 0 15px 2px grey;
+    border: 2px solid white;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    /* justify-content: center; */
+    align-items: center;
+}
+.historic2_head {
+    font-size: 45px;
+    padding-top: 40px;
+    padding-left: 30px;
+    color: red;
+}
+.historic2_theory {
+    font-size: 1rem;
+    padding: 15px 30px;
+    line-height: 33px;
+    text-align: center;
+}
+@media (max-width: 995px) {
+    .historic1_main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .flip-card {
+        width: 90%;
+        height: 410px;
+        /* height: auto; */
+        /* margin-bottom: 20px; */
+    }
+    .historic2_Matter {
+        width: 90%;
+        height: auto;
+    }
+    .historic2_head {
+        font-size: 35px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .historic2_theory {
+        /* font-size: 75%; */
+        padding: 10px 20px;
+        line-height: 28px;
+    }
+}
+.historic2_Matter  a button{
+    padding:0.7em;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+}

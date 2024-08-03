@@ -1,0 +1,153 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card with Map</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            background-color: #f0f0f0;
+            font-family: "montserrat";
+            background-image: url(./images/whiteBG.jpg);
+        }
+        .historic2_main {
+            width: 87%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 60%;
+            height: 550px;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 3s ease;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        .flip-card-front {
+            background-color: red;
+            background-image: url("./Images/mus5.jpg");
+            background-size:100% 100% ;
+            background-repeat: no-repeat;
+        }
+        .flip-card-back {
+            background-color: #fff;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40px;
+        }
+        .flip-card-back iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .historic2_Matter {
+            /* height: 550px; */
+            width: 36%;
+            box-shadow: 0 0 15px 2px grey;
+            border: 2px solid white;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: center; */
+            background-color: white;
+        }
+        .historic2_head {
+            font-size: 45px;
+            padding-top: 40px;
+            padding-left: 30px;
+            color: red;
+        }
+        .historic2_theory {
+            font-size: 1rem;
+            padding: 15px 30px;
+            line-height: 33px;
+            text-align: center;
+        }
+        @media (max-width: 995px) {
+            .historic1_main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flip-card {
+                width: 90%;
+                height: 410px;
+                /* height: auto; */
+                /* margin-bottom: 20px; */
+            }
+            .historic2_Matter {
+                width: 90%;
+                height: auto;
+            }
+            .historic2_head {
+                font-size: 35px;
+                padding-top: 20px;
+                padding-left: 20px;
+            }
+            .historic2_theory {
+                /* font-size: 75%; */
+                padding: 10px 20px;
+                line-height: 28px;
+            }
+        }
+        .historic2_Matter  a button{
+    padding:0.7em;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+}
+    </style>
+</head>
+<body>
+    <div class="historic2_main">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front"></div>
+                <div class="flip-card-back">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.872482285349!2d2.349670076464555!3d48.86064197133247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1c09b820a3%3A0xb7ac6c7e59dc3345!2sThe%20Centre%20Pompidou!5e0!3m2!1sen!2sin!4v1721797069665!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="historic2_Matter">
+            <center><div class="historic2_head">Centre Pompidou</div></center>
+            <div class="historic2_theory">
+                The Centre Pompidou houses the Public Information Library (Bibliothèque publique d'information), the Musée National d'Art Moderne (National Museum of Modern Art), and the IRCAM (Institut de Recherche et Coordination Acoustique/Musique), a center for music and acoustic research.
+            </div>
+            <div>
+                <a href="https://www.tripadvisor.com/Attractions-g187070-Activities-c49-France.html" target="_blank"><button type="button" title="button">Read More..</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

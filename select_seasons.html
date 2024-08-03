@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --cb: cubic-bezier(.05, .61, .41, .95);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+      position: relative;
+      height: 100vh;
+      font-family: "Roboto", sans-serif;
+      transition: 0.25s;
+      background: #e1e1e1;
+    }
+    body.dark {
+      background: #333;
+      color: white;
+    }
+    .cards {
+      display: flex;
+      max-width: 800px;
+      width: calc(100% - 100px);
+      height: 400px;
+    }
+    .cards .card .info .title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .cards .card .label .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+    }
+    .cards .card .label .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 10px;
+      white-space: pre;
+      transition: 3s linear;
+    }
+
+    .cards .card {
+      position: relative;
+      min-width: 60px;
+      background: var(--bg);
+      overflow: hidden;
+      margin: 5px;
+      background-size: auto 150%;
+      background-position: center;
+      cursor: pointer;
+      transition: 1s var(--cb);
+      border-radius: 30px;
+    }
+
+    .cards .card .label {
+      display: flex;
+      position: absolute;
+      right: 0;
+      height: 40px;
+      transition: 0.5s var(--cb);
+    }
+
+    .cards .card.active .label {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .cards .card.active {
+      flex-grow: 10000;
+      background-size: auto 100%;
+    }
+
+    .cards .card:not(.active) .label {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    .cards .card .shadow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(0, #0004, transparent);
+    }
+
+    .cards .card.active .info {
+      opacity: 1;
+    }
+
+    .cards .card:not(.active) .info {
+      opacity: 0;
+    }
+    /* .choose_title{
+        position: absolute;
+        font-size: 25px;
+        background-image: url(./images/img-2.jpg);
+        background-clip: text;
+        color: transparent;
+        top: 0;
+
+    } */
+    .season_tittle{
+        display: flex;
+      justify-content: center;
+      position: relative;
+      top: -40px;
+      font-size: 40px;
+      text-align: center;
+     
+     
+    }
+   #choose{
+    width: 100%;
+    /* font-size:30px; */
+    font-size-adjust: calc(100%-10px);
+     font-weight: bolder;
+     background-clip: text;
+     color: transparent;
+     background-image: linear-gradient(135deg, #FFD26F 10%, #3677FF 100%);
+   }
+  
+   @media (max-width: 615px)
+   {
+      #motto{
+        display: none;
+      }
+   }
+   @media (max-width:465px)
+   {
+      .title{
+        display: none;
+      }
+   }
+   @media (max-width:400px)
+   {
+      .card.active{
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+   }
+   /* @media screen and (max-width:475px) {
+    #choose{
+        font-size: 30px;
+    }
+   } */
+  </style>
+  <title>Expanding Flex Cards</title>
+</head> 
+<body class="dark">
+   <div class="season_tittle" id="choose"><span style="color: red;">Choose Your</span> &nbsp;<span style="color: white;">places Seasonally</span></div>
+  <div class="cards">
+    <div class="card active" style="background-image: url(./images/img-1.jpg);" data-url="waterfall_1.html">
+      <div class="shadow"></div> 
+      <div class="label">
+        <div class="icon" style="color: green">
+          <ion-icon name="sunny"></ion-icon>
+        </div>
+        <div class="info">
+          <div class="title">Spring</div>
+          <div id="motto">Nature Looks Attractive</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url(./images/img-2.jpg);" data-url="summer.html">
+      <div class="shadow"></div> 
+      <div class="label">
+        <div class="icon" style="color: blue">
+          <ion-icon name="swaterfallles"></ion-icon>
+        </div>
+        <div class="info">
+          <div class="title">Summer</div>
+          <div  id="motto">Summer is a State of Mind</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url(./images/img-3.jpg);" data-url="autumn.html">
+      <div class="shadow"></div> 
+      <div class="label">
+        <div class="icon" style="color: orange">
+          <ion-icon name="thunderstorm"></ion-icon>
+        </div>
+        <div class="info">
+          <div class="title">Autumn</div>
+          <div  id="motto">Life Starts All Over Again</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url(./images/img-4.jpg);" data-url="winter.html">
+      <div class="shadow"></div> 
+      <div class="label">
+        <div class="icon" style="color: black">
+          <ion-icon name="snow"></ion-icon>
+        </div>
+        <div class="info">
+          <div class="title">Winter</div>
+          <div id="motto">Not a Season, It's Celebration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(".card").click(function () {
+      if ($(this).hasClass("active")) {
+        window.location.href = $(this).data("url");
+      } else {
+        $(".card").removeClass("active");
+        $(this).addClass("active");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            .transSliderMain {
+                width: 100%;
+                height: 200px;
+                display: flex;
+                overflow: hidden;
+        }
+
+        .slider-track {
+                display: flex;
+                animation: slide 25s linear infinite;
+        }
+        .slider-track img {
+                height: 100%;
+                width: auto;
+                padding: 0 15px;
+                transition: all 1s;
+        }
+        .slider-track img:hover{
+                transform: scale(1.2);
+        }
+
+        @keyframes slide {
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+        <div class="transSliderMain">
+            <div class="slider-track">
+                <img src="./images/tran1.jpg" alt=""> 
+                <img src="./images/trans2.jpg" alt=""> 
+                <img src="./images/trans3.jpg" alt=""> 
+                <img src="./images/trans4.jpg" alt=""> 
+                <img src="./images/trans5.jpg" alt=""> 
+                <img src="./images/trans6.jpg" alt=""> 
+                <img src="./images/trans7.jpg" alt="">
+                <img src="./images/tran1.jpg" alt=""> 
+                <img src="./images/trans2.jpg" alt=""> 
+                <img src="./images/trans3.jpg" alt=""> 
+                <img src="./images/trans4.jpg" alt=""> 
+                <img src="./images/trans5.jpg" alt=""> 
+                <img src="./images/trans6.jpg" alt=""> 
+                <img src="./images/trans7.jpg" alt="">
+                <img src="./images/trans2.jpg" alt=""> 
+                <img src="./images/trans3.jpg" alt=""> 
+                <img src="./images/trans4.jpg" alt=""> 
+                <img src="./images/trans5.jpg" alt=""> 
+                <img src="./images/trans6.jpg" alt=""> 
+                <img src="./images/trans7.jpg" alt="">
+            </div>
+        </div>
+</body>
+</html>
+
